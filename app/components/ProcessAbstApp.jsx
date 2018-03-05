@@ -25,6 +25,7 @@ export default class ProcessAbstApp extends React.Component {
     this.handlePriorityChange = this.handlePriorityChange.bind(this);
     this.handleQuantumChange = this.handleQuantumChange.bind(this);
     this.handleQuantumProcessorChange = this.handleQuantumProcessorChange.bind(this);
+    this.handleSchedulingChange = this.handleSchedulingChange.bind(this);
     this.handleAddProcess = this.handleAddProcess.bind(this);
     this.handleAddProcessor = this.handleAddProcessor.bind(this);
     this.handleDeleteProcess = this.handleDeleteProcess.bind(this);
@@ -47,6 +48,12 @@ export default class ProcessAbstApp extends React.Component {
   handleQuantumProcessorChange(event) {
     this.setState({
       quantumProcessor: event.target.value
+    });
+  }
+
+  handleSchedulingChange(event) {
+    this.setState({
+      scheduling: event.target.value
     });
   }
 
@@ -152,13 +159,14 @@ export default class ProcessAbstApp extends React.Component {
           </div>}
         {this.state.processes.length > 0 && this.state.processors.length > 0 &&
           <div className="row">
-            <form className="col-12 text-center form-inline">
-              <select value={this.state.scheduling} onChange={this.handleSchedulingChange}>
+            <form className="col-12 text-left">
+              <h4>Escalonamento</h4>
+              <select value={this.state.scheduling} onChange={this.handleSchedulingChange} id="priority" className="custom-select form-control">
                 <option value="priority">Prioridade</option>
                 <option value="round-robin">Round Robin</option>
               </select>
             </form>
-            <div className="col-12 text-center">
+            <div className="pt-3 col-12 text-center">
               <button className="btn btn-success btn-lg btn-block" onClick={this.handle}>Iniciar processamento</button>
             </div>
           </div>}

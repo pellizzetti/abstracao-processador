@@ -282,6 +282,7 @@ var ProcessAbstApp = function (_React$Component) {
     _this.handlePriorityChange = _this.handlePriorityChange.bind(_this);
     _this.handleQuantumChange = _this.handleQuantumChange.bind(_this);
     _this.handleQuantumProcessorChange = _this.handleQuantumProcessorChange.bind(_this);
+    _this.handleSchedulingChange = _this.handleSchedulingChange.bind(_this);
     _this.handleAddProcess = _this.handleAddProcess.bind(_this);
     _this.handleAddProcessor = _this.handleAddProcessor.bind(_this);
     _this.handleDeleteProcess = _this.handleDeleteProcess.bind(_this);
@@ -309,6 +310,13 @@ var ProcessAbstApp = function (_React$Component) {
     value: function handleQuantumProcessorChange(event) {
       this.setState({
         quantumProcessor: event.target.value
+      });
+    }
+  }, {
+    key: 'handleSchedulingChange',
+    value: function handleSchedulingChange(event) {
+      this.setState({
+        scheduling: event.target.value
       });
     }
   }, {
@@ -490,10 +498,15 @@ var ProcessAbstApp = function (_React$Component) {
           { className: 'row' },
           _react2.default.createElement(
             'form',
-            { className: 'col-12 text-center form-inline' },
+            { className: 'col-12 text-left' },
+            _react2.default.createElement(
+              'h4',
+              null,
+              'Escalonamento'
+            ),
             _react2.default.createElement(
               'select',
-              { value: this.state.scheduling, onChange: this.handleSchedulingChange },
+              { value: this.state.scheduling, onChange: this.handleSchedulingChange, id: 'priority', className: 'custom-select form-control' },
               _react2.default.createElement(
                 'option',
                 { value: 'priority' },
@@ -508,7 +521,7 @@ var ProcessAbstApp = function (_React$Component) {
           ),
           _react2.default.createElement(
             'div',
-            { className: 'col-12 text-center' },
+            { className: 'pt-3 col-12 text-center' },
             _react2.default.createElement(
               'button',
               { className: 'btn btn-success btn-lg btn-block', onClick: this.handle },
